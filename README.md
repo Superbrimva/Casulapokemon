@@ -15,6 +15,7 @@ class Pokemon:
         self.name = name
         self.base_power = base_power
 
+
     def calculate_final_power(self):
         return self.base_power + random.randint(-5, 5)
 
@@ -33,12 +34,12 @@ def get_user_pokemon():
         Pokemon("Mewtwo", 110)
     ]
 
-    print("SELECT YOUR POKÉMON:")
+    print("\tSELECT YOUR POKÉMON:\n")
     for index, pokemon in enumerate(pokemon_list, 1):
-        print(f"{index}: {pokemon.name} (Base Power: {pokemon.base_power})")
+        print(f"{index}: {pokemon.name}\t (Base Power: {pokemon.base_power})")
 
     while True:
-        choice = input("Enter the number of your choice: ")
+        choice = input("\nEnter the number of your choice: ")
         if choice.isdigit() and 1 <= int(choice) <= len(pokemon_list):
             return pokemon_list[int(choice) - 1]
         print("Invalid selection. Please enter a valid number.")
@@ -74,6 +75,8 @@ def simulate_battle(user_pokemon, opponent_pokemon):
     else:
         print(f"You lose! {user_pokemon.name} is defeated by {opponent_pokemon.name}.\n")
         return "loss"
+    
+    
 
 # Main game function
 def run_game():
@@ -88,8 +91,7 @@ def run_game():
             print("Thank you for playing!")
             break
 
-        if input("Do you want to keep your Pokémon or select a new one? (k: keep, s2
-        : select new): ").lower() == 's':
+        if input("Do you want to keep your Pokémon or select a new one? (k: keep, S: select new): ").lower() == 's':
             user_pokemon = get_user_pokemon()
 
 # Start the game
